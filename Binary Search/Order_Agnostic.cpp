@@ -3,7 +3,7 @@ using namespace std ;
 
 int Order_Agnostic(int array[100], int size , int key)
 {
-    int flag = 0 ,mid ,low=0 ,high=size ;
+    int flag = 0 ,mid ,low=0 ,high=size-1 ;
     if(array[0]<array[1])
         flag = 1 ;      // 1 for ascending order array
     else

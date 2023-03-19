@@ -3,7 +3,7 @@ using namespace std ;
 
 int Binary_Search_Ascending(int array[100], int size, int key)
 {
-    int low=0, high=size, mid ;
+    int low=0, high=size-1, mid ;
     while(low<=high)
     {
         mid = low + ((high-low)/2) ;
