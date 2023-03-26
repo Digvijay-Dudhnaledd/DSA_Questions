@@ -1,22 +1,32 @@
+/*This may give wrong answer in finite arry bcoz we are increaing high as high*2 and it will cause index out of bound problem(mid<size). This will work flawlessly for Infinite array.*/
+
 #include <bits/stdc++.h>
 using namespace std ;
 
-int Binary_Search_Descending(int array[100], int size, int key)
+int InfiniteSearch(int array[100] ,int key ,int size)
 {
-    int low=0, high=size-1, mid ;
+    int low=0 ,high=1 ,mid ;
+    
     while(low<=high)
     {
-        mid = low + ((high-low)/2) ;
-        if(key == array[mid])
-            return mid ;
-        else if(key < array[mid])
-            low = mid + 1 ;
-        else 
-            high = mid - 1 ;
+        if(array[high]<key)
+        {
+            low = high ;
+            high = high*2 ;
+        }
+        else
+        {
+            mid = low + ((high-low)/2) ;
+            if(array[mid]==key) 
+                return mid ;
+            else if(array[mid]<key)
+                low = mid+1 ;
+            else
+                high = mid-1 ;
+        }   
     }
     return -1 ;
 }
-
 
 int main()
 {
@@ -32,7 +42,7 @@ int main()
     cout<<"Enter the number you want find : " ;
     cin>>key ;
 
-    index = Binary_Search_Descending(array,size,key) ;
+    index = InfiniteSearch(array,key,size) ;
     cout<<"```````````````````````````````````````````\n" ; 
 
     if(-1 == index)

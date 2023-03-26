@@ -36,13 +36,9 @@ int main()
     cout<<"```````````````````````````````````````````\n" ; 
 
     if(-1 == index)
-    {
-        cout<<"The number is not found.\n"<<endl ;
-    }      
+        cout<<"The number is not found.\n"<<endl ;   
     else
-    {
         cout<<"The number is found at position : "<< index+1 <<" in Given Array."<<endl ;
-    }
         
     return 0 ;
 }

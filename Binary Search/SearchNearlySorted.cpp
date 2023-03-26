@@ -1,22 +1,33 @@
+/*Nearly Sorted Array : The element which should be at ith position is may be at ith, i+1th, i-1th position*/
+
 #include <bits/stdc++.h>
 using namespace std ;
 
-int Binary_Search_Descending(int array[100], int size, int key)
+int NearlySortedSearch(int array[100] ,int size, int key)
 {
-    int low=0, high=size-1, mid ;
+    int low=0 ,high=size-1 ,mid ,previous ,next ;
     while(low<=high)
     {
         mid = low + ((high-low)/2) ;
-        if(key == array[mid])
-            return mid ;
-        else if(key < array[mid])
-            low = mid + 1 ;
+        previous = (mid-1+size) % size ;
+        next = (mid+1) % size ;
+
+        if(array[mid]==key || array[previous]==key || array[next]==key)
+        {
+            if(array[mid]==key)
+                return mid ;
+            else if(array[previous]==key)
+                return previous ;
+            else 
+                return next ;
+        }
+        else if(array[mid]<key)
+            low = mid+2 ;
         else 
-            high = mid - 1 ;
+            high = mid-2 ;
     }
     return -1 ;
 }
-
 
 int main()
 {
@@ -32,7 +43,7 @@ int main()
     cout<<"Enter the number you want find : " ;
     cin>>key ;
 
-    index = Binary_Search_Descending(array,size,key) ;
+    index = NearlySortedSearch(array,size,key) ;
     cout<<"```````````````````````````````````````````\n" ; 
 
     if(-1 == index)
